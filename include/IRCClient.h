@@ -21,6 +21,12 @@
 #include <list>
 #include "IRCSocket.h"
 
+#ifdef _WIN32
+#  define EXPORTDLL __declspec( dllexport )
+#else
+#  define EXPORTDLL
+#endif
+
 class IRCClient;
 
 extern std::vector<std::string> split(std::string const&, char);
@@ -74,7 +80,7 @@ struct IRCCommandHook
     void (*function)(IRCMessage /*message*/, IRCClient* /*client*/);
 };
 
-class IRCClient
+class EXPORTDLL IRCClient
 {
 public:
     IRCClient() : _debug(false) {};
