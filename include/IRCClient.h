@@ -21,7 +21,7 @@
 #include <list>
 #include "IRCSocket.h"
 
-#ifdef _WIN32
+#ifdef IRCCLIENT_EXPORT
 #  define EXPORTDLL __declspec( dllexport )
 #else
 #  define EXPORTDLL

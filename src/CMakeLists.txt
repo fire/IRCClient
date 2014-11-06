@@ -5,6 +5,8 @@ list(APPEND ircclient_HEADERS ../include/IRCClient.h ../include/IRCHandler.h ../
 set(ircclientshared_SOURCE ${ircclient_SOURCE})
 LIST(REMOVE_ITEM ircclientshared_SOURCE Main.cpp)
 add_library(ircclientdll SHARED ${ircclientshared_SOURCE} ${ircclient_HEADERS})
+set_target_properties(ircclientdll PROPERTIES COMPILE_FLAGS -DIRCCLIENT_EXPORT)
+
 add_executable(ircclient ${ircclient_SOURCE} ${ircclient_HEADERS})
 
 include_directories(${PROJECT_SOURCE_DIR}/include)

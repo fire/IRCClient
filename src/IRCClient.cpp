@@ -139,6 +139,7 @@ void IRCClient::Parse(std::string data)
 
     IRCMessage ircMessage(command, cmdPrefix, parameters);
 
+#ifndef IRCCLIENT_EXPORT
     // Default handler
     int commandIndex = GetCommandHandler(command);
     if (commandIndex < NUM_IRC_CMDS)
@@ -148,7 +149,7 @@ void IRCClient::Parse(std::string data)
     }
     else if (_debug)
         std::cout << original << std::endl;
-
+#endif
     // Try to call hook (if any matches)
     CallHook(command, ircMessage);
 }
